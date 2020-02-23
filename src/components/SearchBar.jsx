@@ -1,9 +1,8 @@
-import React, {useState} from 'react';
-import axios from 'axios';
-import {createUseStyles} from 'react-jss'
-
-const API_KEY = '7650d1c9ec87898004f754e19e5b71ae';
-const ROOT_URL = `http://api.openweathermap.org/data/2.5/forecast?appid=${API_KEY}&q=`;
+import React, { useState } from 'react';
+import { fetchWeatherData } from '../actions/index';
+import { createUseStyles } from 'react-jss';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 const setStyles = createUseStyles({
     'form':{
@@ -16,42 +15,41 @@ const setStyles = createUseStyles({
     }
 });
 
-const SearchBar = () => {
+
+const SearchBar = (props) => {
     const classes = setStyles();
     const [location, setLocation] = useState('');
-
-    const fetchWeatherData = async () => {
-        const url = ROOT_URL + location;
-        const response = await axios.get(url);
-        console.log(response);
-    };
 
     const handleLocationChange = event => {
         setLocation(event.target.value);
     };
 
     const handleClick = () => {
-        fetchWeatherData();
+        props.fetchWeatherData(location);
     };
     
     const handleSubmit = (event) => {
         event.preventDefault();
-        fetchWeatherData();
-    }
+        props.fetchWeatherData(location);
+    };
 
     return (
-        <div className="ui grid">
-            <form className={classes["form"]} onSubmit={handleSubmit}>
+        <div className="row">
+            <form className={classes["form"]} onSubmit={(event) => {handleSubmit(event)}}>
                 <div className={"ui action input " + classes[".search-input"]}>
-                        <input type="text" onChange={handleLocationChange} placeholder="Enter Location" />
-                        <button className="ui icon button" onClick={handleClick}>
+                        <input type="text" onChange={(event) => {handleLocationChange(event)}} placeholder="Enter Location" />
+                        <button className="ui icon button" onClick={() => {handleClick()}}>
                             <i className="search icon" ></i>
                         </button>
                 </div>
             </form> 
         </div>
     );
-
 }
 
-export default SearchBar;
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ fetchWeatherData }, dispatch);
+}
+
+
+export default connect(null, mapDispatchToProps)(SearchBar);
