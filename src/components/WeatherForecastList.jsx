@@ -10,6 +10,22 @@ const setStyles = createUseStyles({
     }
 });
 
+let darkSkyToFontAwesomeIconMap = {
+    "clear-day" : "fa fa-sun",
+    "clear-night": "fa fa-moon-stars",
+    "rain": "fa fa-cloud-rain",
+    "snow": "fa fa-snowflake",
+    "sleet": "fa fa-cloud-showers-heavy",
+    "wind": "fa fa-wind",
+    "fog": "fa fa-smog",
+    "cloudy": "fa fa-cloud",
+    "partly-cloudy-day": "fa fa-cloud-sun",
+    "partly-cloudy-night": "fa fa-moon-cloud",
+    "hail": "fa fa-cloud-meatball",
+    "thunderstorm": "fa fa-bolt",
+    "tornado": "fa fa-wind"
+}
+
 const WeatherForecastList = (state) => {
         const {weather} = state;
         const classes = setStyles();
@@ -22,9 +38,22 @@ const WeatherForecastList = (state) => {
         const dailyForecastData = data.slice(0,5);
         //only need 5 days.
 
+        const getIconClass = (weatherType) => {
+            let iconClass = darkSkyToFontAwesomeIconMap[weatherType];
+            if(!iconClass)
+                iconClass = "fa fa-wind";
+            return iconClass;
+        };
+
         const renderWeatherList = (dailyForecastData) => {
             return dailyForecastData.map(dailyForecast => {
-                return <div className={"three wide column " + classes['rounded-border']} >{dailyForecast.summary}</div>;
+                const classString = getIconClass(dailyForecast.icon);
+                return (
+                    <div className={"three wide column " + classes['rounded-border']} >
+                        <i class={classString}></i>
+                        {dailyForecast.summary}
+                    </div>
+                );
             });
         };
 

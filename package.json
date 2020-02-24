@@ -11,6 +11,7 @@
     "jest-cli": "^25.1.0",
     "jss": "^10.0.4",
     "jss-preset-default": "^10.0.4",
+    "postinstall": "^0.7.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-jss": "^10.0.4",
