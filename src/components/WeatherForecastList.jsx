@@ -8,6 +8,11 @@ const setStyles = createUseStyles({
     border: "solid 1px black",
     margin: "2px"
   },
+  "date-header": {
+    marginLeft: "-1rem",
+    marginRight: "-1rem",
+    borderBottom: "1px solid black"
+  },
   "margin-bottom": {
     marginBottom: "1em"
   },
@@ -64,7 +69,8 @@ const WeatherForecastList = state => {
         icon,
         humidity,
         precipProbability,
-        precipIntensityMax
+        precipIntensityMax,
+        time
       } = dailyForecast;
 
       const classString = getIconClass(icon);
@@ -73,12 +79,20 @@ const WeatherForecastList = state => {
       const precipitationMax = precipIntensityMax.toFixed(2);
       const sunriseDate = new Date(sunriseTime * 1000);
       const sunsetDate = new Date(sunsetTime * 1000);
+      const date = new Date(time * 1000);
+      const dayFormatter = new Intl.DateTimeFormat("en-US", {
+        weekday: "long"
+      });
+      const monthName = date.toLocaleString("default", { month: "short" });
 
       return (
         <div
           key={index}
           className={"three wide column " + classes["rounded-border"]}
         >
+          <div className={classes["date-header"]}>
+            {dayFormatter.format(date)}, {monthName}-{date.getDate()}
+          </div>
           <div
             className={`${classes["margin-top"]} ${classes["margin-bottom"]} ${classes["large-icon"]}`}
           >
