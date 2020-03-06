@@ -10,19 +10,19 @@ const ROOT_WEATHER_URL = `https://api.darksky.net/forecast/${WEATHER_API_KEY}/`;
 const ROOT_LOCATION_URL = `https://maps.googleapis.com/maps/api/geocode/json?key=${LOCATION_API_KEY}&components=`;
 
 //local mock responses
-// const ROOT_WEATHER_URL = 'http://localhost:4000/weather?q=';
-// const ROOT_LOCATION_URL = 'http://localhost:4000/location?components=';
+// const ROOT_WEATHER_URL = "http://localhost:4000/weather?q=";
+// const ROOT_LOCATION_URL = "http://localhost:4000/location?components=";
 
 export const FETCH_WEATHER = "FETCH_WEATHER";
 
 export async function fetchWeatherData(location) {
   const { latitude, longitude } = await fetchLocationData(location);
   const url = DARK_SKY_PROXY + ROOT_WEATHER_URL + latitude + "," + longitude;
-  const { data } = await axios.get(url);
+  const request = axios.get(url);
 
   return {
     type: FETCH_WEATHER,
-    payload: data
+    payload: request
   };
 }
 

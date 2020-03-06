@@ -15,7 +15,7 @@ const setStyles = createUseStyles({
   }
 });
 
-export const SearchBar = props => {
+const SearchBar = props => {
   const classes = setStyles();
   const [location, setLocation] = useState("");
 
