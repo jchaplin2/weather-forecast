@@ -48,8 +48,8 @@ const WeatherForecastList = state => {
   }
 
   const classes = setStyles();
-  const { data } = weather.daily;
-  const dailyForecastData = data.slice(0, 5);
+  const { daily } = weather.data;
+  const dailyForecastData = daily.data.slice(0, 5);
   //doing a 5 day forecast, so take first 5 days.
 
   const getIconClass = weatherType => {
