@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const WEATHER_API_KEY = "ebdf7693b8212976a3017b9638488edc";
-const LOCATION_API_KEY = "AIzaSyBgH6ZLz9Pyrq2emfnGeFppvMWgL9KYuVM";
+const LOCATION_API_KEY = "AIzaSyDThRQMagtyJjb3dOjhK5CqJsog2pSWriA";
 
 const DARK_SKY_PROXY = "https://cors-anywhere.herokuapp.com/";
 //work around for dak sky CORS issue with darksky.

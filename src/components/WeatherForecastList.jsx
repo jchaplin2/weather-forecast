@@ -44,7 +44,7 @@ const WeatherForecastList = state => {
   const { weather } = state;
 
   if (!weather) {
-    return <div className="row"></div>;
+    return <div id="forecast-list" className="row"></div>;
   }
 
   const classes = setStyles();
@@ -72,7 +72,6 @@ const WeatherForecastList = state => {
         precipIntensityMax,
         time
       } = dailyForecast;
-
       const classString = getIconClass(icon);
       const humidityPercent = Math.round(humidity * 100);
       const precipitationPercent = Math.round(precipProbability * 100);
@@ -130,7 +129,9 @@ const WeatherForecastList = state => {
       <div className="row">
         <h1> 5 Day Weather Forecast </h1>
       </div>
-      <div className="row"> {renderWeatherList(dailyForecastData)} </div>
+      <div id="forecast-list" className="row">
+        {renderWeatherList(dailyForecastData)}
+      </div>
     </Fragment>
   );
 };
