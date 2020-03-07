@@ -126,9 +126,9 @@ const WeatherForecastList = state => {
 
   return (
     <Fragment>
-      <div className="row">
+      <header className="row">
         <h1> 5 Day Weather Forecast </h1>
-      </div>
+      </header>
       <div id="forecast-list" className="row">
         {renderWeatherList(dailyForecastData)}
       </div>

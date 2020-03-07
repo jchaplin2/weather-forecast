@@ -1,15 +1,15 @@
-import React from 'react';
+import React from "react";
 
-import SearchBar from './SearchBar';
-import WeatherForecastList from './WeatherForecastList';
+import SearchBar from "./SearchBar";
+import WeatherForecastList from "./WeatherForecastList";
 
 const App = () => {
-    return (
-        <div className="ui center aligned grid">
-            <SearchBar/>
-            <WeatherForecastList />
-        </div>
-    );
+  return (
+    <main className="ui center aligned grid">
+      <SearchBar />
+      <WeatherForecastList />
+    </main>
+  );
 };
 
 export default App;
