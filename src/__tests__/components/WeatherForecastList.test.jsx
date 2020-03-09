@@ -95,7 +95,6 @@ describe("WeatherForecastList", () => {
         ? el.props.className.includes("three wide column")
         : false
     );
-    //console.log(forecastListOfDays.length);
 
     expect(forecastListOfDays.length).toBe(DAYS_IN_FORECAST);
   });
