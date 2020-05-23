@@ -26,17 +26,17 @@ const setStyles = createUseStyles({
 let darkSkyToFontAwesomeIconMap = {
   "clear-day": "fa fa-sun yellow",
   "clear-night": "fa fa-moon-stars blue",
-  rain: "fa fa-cloud-rain gray",
-  snow: "fa fa-snowflake blue",
-  sleet: "fa fa-cloud-showers-heavy blue",
-  wind: "fa fa-wind blue",
-  fog: "fa fa-smog gray",
-  cloudy: "fa fa-cloud blue",
+  "rain": "fa fa-cloud-rain gray",
+  "snow": "fa fa-snowflake blue",
+  "sleet": "fa fa-cloud-showers-heavy blue",
+  "wind": "fa fa-wind blue",
+  "fog": "fa fa-smog gray",
+  "cloudy": "fa fa-cloud blue",
   "partly-cloudy-day": "fa fa-cloud-sun blue",
   "partly-cloudy-night": "fa fa-moon-cloud blue",
-  hail: "fa fa-cloud-meatball gray",
-  thunderstorm: "fa fa-bolt yellow",
-  tornado: "fa fa-wind blue"
+  "hail": "fa fa-cloud-meatball gray",
+  "thunderstorm": "fa fa-bolt yellow",
+  "tornado": "fa fa-wind blue"
 };
 
 export const WeatherForecastDaily = props => {

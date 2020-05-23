@@ -2,16 +2,19 @@ import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import WeatherForecastDaily from "./WeatherForecastDaily";
 
-const WeatherForecastList = state => {
-  const { weather } = state;
+const WEEKLY = "weekly";
+const DAILY = "today";
+
+const WeatherForecastList = props => {
+  const { weather, forecastInd } = props;
 
   if (!weather) {
     return <div id="forecast-list" className="row"></div>;
   }
 
   const { daily } = weather.data;
-  const dailyForecastData = daily.data.slice(0, 5);
-  //doing a 5 day forecast, so take first 5 days.
+  const numOfDays = forecastInd === WEEKLY ? 5  : 1;
+  const dailyForecastData = daily.data.slice(0, numOfDays);
 
   const renderWeatherList = dailyForecastData => {
     return dailyForecastData.map((dailyForecast, index) => {
@@ -24,7 +27,9 @@ const WeatherForecastList = state => {
   return (
     <Fragment>
       <header className="row">
-        <h1> 5 Day Weather Forecast </h1>
+        <h1> 
+          {forecastInd === WEEKLY ? "5 Day Weather Forecast" : "Today's Forecast"}
+        </h1>
       </header>
       <div id="forecast-list" className="row">
         {renderWeatherList(dailyForecastData)}

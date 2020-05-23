@@ -9,3 +9,12 @@
 .gray {
   color: #708090;
 }
+
+ul.item.menu > .item.no-padding {
+  padding: 0;
+}
+
+ul.item.three.menu .item.page-link {
+  display: inline-block;
+  width: 100%;
+}
